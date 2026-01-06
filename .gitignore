@@ -1,0 +1,84 @@
+# ==============================
+# Build / bin / obj
+# ==============================
+bin/
+obj/
+Debug/
+Release/
+x64/
+x86/
+[Rr]elease*/
+[Dd]ebug*/
+
+# ==============================
+# Visual Studio
+# ==============================
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.ide
+
+# ==============================
+# Rider / JetBrains
+# ==============================
+.idea/
+*.sln.iml
+
+# ==============================
+# NuGet / packages
+# ==============================
+*.nupkg
+*.snupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+.nuget/
+
+# ==============================
+# Resharper
+# ==============================
+_ReSharper*/
+*.DotSettings.user
+
+# ==============================
+# Dotnet Core / SDK
+# ==============================
+*.dotCover
+*.coverage
+*.coveragexml
+*.opendb
+*.vsmdi
+*.testsettings
+*.ncrunch*
+*.local
+*.log
+
+# ==============================
+# User-specific / temp
+# ==============================
+*.log
+*.tmp
+*.cache
+*.bak
+
+# ==============================
+# OS generated files
+# ==============================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ==============================
+# VS Code
+# ==============================
+.vscode/
+*.code-workspace
+
+# ==============================
+# Other
+# ==============================
+_ReSharper.Caches/
+*.dotCover
