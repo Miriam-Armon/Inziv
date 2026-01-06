@@ -5,8 +5,7 @@ This project is a Hardware Monitor application. Follow the instructions below to
 ---
 
 ## 1. Clone the project from GitHub
-git clone https://github.com/Miriam-Armon/Inziv.git
-cd Inziv
+git clone https://github.com/Miriam-Armon/Inziv.git MiriamArmonHomeAssignment
 ## 2. Configure the application
 
 Before running the application, set the path to the hardware file in the appsettings.json file.
