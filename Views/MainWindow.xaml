@@ -1,0 +1,57 @@
+﻿<Window x:Class="HardwareMonitor.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:HardwareMonitor.ViewModels"
+        xmlns:local="clr-namespace:HardwareMonitor.Views"
+        Title="Hardware Monitor"
+        Height="450" Width="600">
+
+    <Window.Resources>
+        <local:NumberFormatConverter x:Key="NumberFormatConverter"/>
+        <local:BooleanToBrushConverter x:Key="BooleanToBrushConverter"/>
+        <Style x:Key="BaseTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <DataTemplate x:Key="BoolTemplate">
+            <Grid HorizontalAlignment="Left"
+          VerticalAlignment="Center">
+                <Ellipse Width="20"
+                 Height="20"
+                 Fill="{Binding Value, Converter={StaticResource BooleanToBrushConverter}}" />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="NumberTemplate">
+            <TextBlock Style="{StaticResource BaseTextBlockStyle}"
+               HorizontalAlignment="Left">
+                <TextBlock.Text>
+                    <MultiBinding Converter="{StaticResource NumberFormatConverter}">
+                        <Binding Path="Value"/>
+                        <Binding Path="Type"/>
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+        </DataTemplate>
+
+        <DataTemplate x:Key="StringTemplate">
+            <TextBlock Text="{Binding Value}" TextWrapping="Wrap" Style="{StaticResource BaseTextBlockStyle}"/>
+        </DataTemplate>
+
+        <local:DataItemTemplateSelector x:Key="DataItemTemplateSelector"
+                                        BoolTemplate="{StaticResource BoolTemplate}"
+                                        NumberTemplate="{StaticResource NumberTemplate}"
+                                        StringTemplate="{StaticResource StringTemplate}" />
+    </Window.Resources>
+
+    <Grid Margin="10">
+        <DataGrid ItemsSource="{Binding Items}" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True"
+                  HeadersVisibility="Column" GridLinesVisibility="Horizontal" AlternatingRowBackground="LightGray">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="200"/>
+                <DataGridTemplateColumn Header="Value" Width="*" CellTemplateSelector="{StaticResource DataItemTemplateSelector}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
